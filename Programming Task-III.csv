@@ -1,0 +1,1064 @@
+Student Name,Student Email,Solution ID,Submission Component ID,Solution,Tests Passed,Total Tests,Submitted Time,Correct,Size,% Score,Problem ID,Problem Title,Problem Component ID,Assignment ID,Assignment Title,Late Submission?
+Pranathi Nallala,173J1A0597@raghuenggcollege.in,27823390,27680218,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age,weight];
+y=bp';
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+t=size(X);
+m=t(1);
+n=t(2);
+
+%%
+% Initialize parameters
+theta=[1;1;1];
+alp=0.0001;
+t1=ones(m,1);
+X1=[t1,X];
+%Your code here
+
+%% loop over number of iterations
+for i=1:50
+    h=theta'*X1';
+    e=h-y;
+    J=(1/(2*m))*sum(e.^2);
+    delt=(1/m).*(e*X1);
+    theta=theta-alp.*delt';
+end
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta'*X1';
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-05 15:10:45 IST,1,196,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+kamireddy seshu kumar,19985a0226@raghuenggcollege.in,27840457,27697285,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age,weight];
+y=[bp];
+sz=size(X);
+%% determine the values of m and n; here m=number of samples, n=number of features
+m=sz(1);
+n=sz(2);
+
+%%
+% Initialize parameters
+X0=ones(m,1);
+X_mod=[X0,X];
+theta=1*ones(n+1,1);
+J=0;
+alpha=0.0001;
+%Your code here
+
+%% loop over number of iterations
+for i=1:50
+    hyp=theta'*X_mod;
+    err=hyp-y;
+    J=(1/(2*m))*sum(err^2);
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+del_theta=(1/m).*(err*X_mod);
+%Your code here
+
+%% Updating Parameters
+theta=theta-alpha.*del_theta;
+pause(0.5)
+end
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta'*X_mod';
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",0,4,2020-08-06 09:37:32 IST,0,204,0%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,Y
+P S N Sharma,18981A05A7@raghuenggcollege.in,27822562,27679390,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age,weight];
+y=[bp'];
+sz=size(X);
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+m=sz(1);
+n=sz(2);
+alpha=0.0001;
+theta0=1;
+theta1=1;
+theta2=1;
+J=0;
+theta=[theta0,theta1,theta2];
+X0=ones(m,1);
+X_mod=[X0,X];
+theta=1*ones(n+1,1);
+%%
+% Initialize parameters
+
+
+%Your code here
+for i=1:50
+    h=theta'*X_mod';
+    err=h-y;
+    J=(1/(2*m))*sum(err.^2);
+    dt=(1/m).*(err*X_mod);
+    theta=theta-alpha'*dt';
+end
+%% loop over number of iterations
+    
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta'*X_mod'
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-05 14:24:13 IST,1,224,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Sri Sai Sundareswar Pullela,18981A05B4@raghuenggcollege.in,27629758,27486586,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age, weight];
+y=[bp'];
+s = size(X);
+
+m = s(1);
+n = s(2);
+theta = [1;1;1];
+
+J = 0;
+X0 = ones(m,1);
+Xmod = [X0, X];
+alpha = 0.0001;
+
+%% loop over number of iterations
+for i = 1:50
+%% Compute hypothesis, error and cost function (J)
+    hyp = theta' * Xmod';
+    error = hyp - y;
+    J = (1 / (2 * m)) * sum(error.^2);
+
+%% Computation of gradient
+    del_theta = (1 / m).*(error * Xmod);
+%% Updating Parameters
+    theta = theta - alpha .* del_theta';
+end
+
+y1 = theta' * Xmod'
+
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-07-30 16:33:16 IST,1,202,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Sri Sai Sundareswar Pullela,18981A05B4@raghuenggcollege.in,27826717,27683545,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age weight];
+y=[bp'];
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+sz = size(X);
+m = sz(1);
+n = sz(2);
+%%
+% Initialize parameters
+X0 = ones(m,1);
+X_mod = [X0,X];
+%theta0 = 1;
+theta = [1;1;1];
+%theta = [theta,X_mod']
+J = 0;
+alpha = 0.0001;
+%Your code here
+
+%% loop over number of iterations
+ for i = 1 : 50   
+%% Compute hypothesis, error and cost function (J)
+%hyp = theta0 + theta' .* X_mod(1) + theta' .* X_mod(2);
+hyp = X_mod' * theta
+err = hyp' - y;
+%Your code here
+J = (1/(2*m) .* sum(err .^2));
+%% Computation of gradient
+deltheta0 = (1/m) .* (err * 1); 
+deltheta1 = (1/m) .* (err * X(1)); 
+deltheta2 = (1/m) .* (err * X(2)); 
+%Your code here
+
+%% Updating Parameters
+theta = theta - alpha .* deltheta1;
+%Your code here
+
+ end
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta .* X_mod';
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",0,4,2020-08-05 19:52:57 IST,0,228,0%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Lokesh Bhesetti,18981A0518@raghuenggcollege.in,27823744,27680572,"filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+
+X=[ones(16,1),age,weight];
+y=[bp'];
+del_theta=ones(1,3)
+[m,n]=size(X)
+alpha=0.0001
+theta=[1;1;1]
+for i=1:50
+    h=theta'*X'
+    error=(h-y)
+    J=(sum(error.^2))/(2*m)
+    del_theta=((error*X)/m)
+    theta=theta-(alpha.*del_theta')
+end
+y1=theta'*X'
+plot(y,'bo-','Linewidth',2.5)
+ylim([90 170])
+hold on;
+
+%Your code here
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')
+",4,4,2020-08-05 15:34:26 IST,1,190,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+sanjay kumar pediredla,18981a0241@raghuenggcollege.in,27748375,27605203,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age weight];
+y=bp';
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+sz = size(X);
+m = sz(1);
+n = sz(2);
+%%
+% Initialize parameters
+X0 = ones(m,1);
+X_mod = [X0,X];
+theta0 = 1;
+theta(j) = [1;1;1];
+j = 0;
+alpha = 0.0001;
+%Your code here
+
+%% loop over number of iterations
+ for i = 1 : 50   
+%% Compute hypothesis, error and cost function (J)
+hyp = theta0+theta' * X_mod(1)' + theta' * X_mod(2)';
+err = hyp' - y;
+%Your code here
+j = (1/(2*m) .* sum(err .^2));
+%% Computation of gradient
+deltheta0 = (1/m) .* (err * 1); 
+deltheta1 = (1/m) .* (err * X(1)); 
+deltheta2 = (1/m) .* (err * X(2)); 
+%Your code here
+
+%% Updating Parameters
+theta = theta - alpha .* deltheta1;
+%Your code here
+
+ end
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta(j) . X;
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')
+",0,4,2020-08-03 11:09:53 IST,0,246,0%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+sanjay kumar pediredla,18981a0241@raghuenggcollege.in,27759271,27616099,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age weight];
+y=bp';
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+sz = size(X);
+m = sz(1);
+n = sz(2);
+%%
+% Initialize parameters
+X0 = ones(m,1);
+X_mod = [X0,X];
+theta0 = 1;
+theta = [1;1;1];
+j = 0;
+alpha = 0.0001;
+%Your code here
+
+%% loop over number of iterations
+ for i = 1 : 50   
+%% Compute hypothesis, error and cost function (J)
+hyp = theta0+theta' .* X_mod(1)' + theta' .* X_mod(2)';
+err = hyp' - y;
+%Your code here
+j = (1/(2*m) .* sum(err .^2));
+%% Computation of gradient
+deltheta0 = (1/m) .* (err * 1); 
+deltheta1 = (1/m) .* (err * X(1)); 
+deltheta2 = (1/m) .* (err * X(2)); 
+%Your code here
+
+%% Updating Parameters
+theta = theta - alpha .* deltheta1;
+%Your code here
+
+ end
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta .* X_mod';
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')
+",1,4,2020-08-03 20:36:09 IST,0,243,25%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+sanjay kumar pediredla,18981a0241@raghuenggcollege.in,27759763,27616591,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age weight];
+y=bp';
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+sz = size(X);
+m = sz(1);
+n = sz(2);
+%%
+% Initialize parameters
+X0 = ones(m,1);
+X_mod = [X0,X];
+theta0 = 1;
+theta = [1;1;1];
+%theta = [theta,X_mod']
+J = 0;
+alpha = 0.0001;
+%Your code here
+
+%% loop over number of iterations
+ for i = 1 : 50   
+%% Compute hypothesis, error and cost function (J)
+hyp = theta0 + theta' .* X_mod(1) + theta' .* X_mod(2);
+err = hyp' - y;
+%Your code here
+J = (1/(2*m) .* sum(err .^2));
+%% Computation of gradient
+deltheta0 = (1/m) .* (err * 1); 
+deltheta1 = (1/m) .* (err * X(1)); 
+deltheta2 = (1/m) .* (err * X(2)); 
+%Your code here
+
+%% Updating Parameters
+theta = theta - alpha .* deltheta1;
+%Your code here
+
+ end
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta .* X_mod';
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')
+",1,4,2020-08-03 20:56:51 IST,0,241,25%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+sanjay kumar pediredla,18981a0241@raghuenggcollege.in,27827176,27684004,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age weight];
+y=[bp]';
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+sz = size(X);
+m = sz(1);
+n = sz(2);
+%%
+% Initialize parameters
+X0 = ones(m,1);
+X_mod = [X0,X];
+%theta0 = 1;
+theta = [1;1;1];
+%theta = [theta,X_mod']
+J = 0;
+alpha = 0.0001;
+%Your code here
+
+%% loop over number of iterations
+for i = 1 : 50   
+%% Compute hypothesis, error and cost function (J)
+%hyp = theta0 + theta' .* X_mod(1) + theta' .* X_mod(2);
+    hyp = theta' * X_mod';
+    err = hyp - y;
+%Your code here
+    J = (1/(2*m) .* sum(err .^2));
+%% Computation of gradient
+ 
+    deltheta = (1 / m).*(err * X_mod)
+%Your code here
+
+%% Updating Parameters
+    theta = theta - alpha .* deltheta';
+%Your code here
+
+end
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta' * X_mod';
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-05 20:19:54 IST,1,202,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+VELAMPUDI TARAKA SAI PRIYA,17981a0267@raghuenggcollege.in,27813649,27670477,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+b = size(age)
+c = size(weight)
+X=[age,weight];
+y=[bp.'];
+k=size(X);
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+m=k(1);
+n=k(2);
+
+%%
+% Initialize parameters
+
+%Your code here
+X1=ones(m,1);
+X_mod=[X1,X];
+X_mod = X_mod.'
+a= size(X_mod)
+alpha=0.0001;
+theta = [1;1;1]
+d= size(theta)
+%% loop over number of iterations
+    
+%% Compute hypothesis, error and cost function (J)
+%Your code here
+for i=1:50
+
+hyp=theta.'*X_mod
+err=hyp-y
+J=(1/(2*m))*(sum(err.^2))
+e = size(err)
+del_theta=(1/(m))*((err*X_mod.').')
+theta=theta-(alpha.*del_theta)
+end
+%Your code here
+%%
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta.'*X_mod;
+%Your code here
+y1
+%xlim([0 16])
+%ylim([0 170)]
+%hold on;
+%title('Cost function intuition')
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-05 08:14:19 IST,1,238,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Jaswanth Panda,18981A0559@raghuenggcollege.in,27646522,27503350,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age,weight];
+y=bp';
+sz=size(X);
+m=sz(1);
+n=sz(2);
+X0=ones(m,1);
+X_mod=[X0,X];
+theta=1*ones(n+1,1);
+J=0;
+alpha=0.0001;
+for i=1:50
+    hyp=theta'*X_mod';
+    err=hyp-y;
+    J=(1/(2*m))*sum(err.^2);
+    del_theta=(1/m).*(err*X_mod);
+    theta=theta-alpha.*del_theta';
+end
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta'*X_mod';
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-07-30 23:59:55 IST,1,201,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+LAKSHMANA VISHNU SREE MANOHAR MULA,18981A04A4@raghuenggcollege.in,27722215,27579043,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+b = size(age)
+c = size(weight)
+X=[age, weight];
+y=[bp.'];
+k = size(X)
+m = k(1)
+n = k(2)
+%% determine the values of m and n; here m=number of samples, n=number of features
+X1 = ones(m, 1);
+X_final = [X1, X];
+X_final = X_final.'
+a = size(X_final)
+alpha = 0.0001;
+theta = [1;1;1]
+d = size(theta)
+%%
+% Initialize parameters
+for i = 1:50
+    h = theta.'*X_final
+    err = (h-y)
+    J = (1/(2*m))*(sum(err.^2))
+    e = size(err)
+    del_theta = (1/(m))*((err*X_final.').')
+    theta = theta-(alpha.*del_theta)
+end
+%Your code here
+
+%% loop over number of iterations
+    
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1 = theta.'*X_final
+%Your code here
+y1
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-02 14:34:27 IST,1,239,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Pramit Karmakar,18981A04E1@raghuenggcollege.in,27730189,27587017,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[age,weight];
+y=[bp.'];
+%% determine the values of m and n; here m=number of samples, n=number of features
+z=size(weight);
+w=size(age);
+q=size(X);
+m=q(1);
+n=q(2);
+% Initialize parameters
+X1=ones(m,1);
+X_final=[X1,X];
+X_final=X_final.';
+%Your code here
+a=size(X_final)
+alp=0.0001;
+theta = [1;1;1]
+d=size(theta)
+%% loop over number of iterations
+for i=1:50
+    h=theta.'*X_final;
+    err=h-y;
+    J=(1/(2*m)*sum(err.^2));
+    del_theta=(1/m)*((err*X_final.').');
+    theta=theta-(alp.*del_theta);
+end
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1=theta.'*X_final;
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-02 19:50:13 IST,1,228,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+VEPURI VENKATA SAI PRANAY,18981a04j1@raghuenggcollege.in,27728797,27585625,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+b = size(age)
+c = size(weight)
+X =[age,weight];
+y =[bp.'];
+k = size(X)
+m = k(1)
+n = k(2)
+%% determine the values of m and n; here m=number of samples, n=number of features
+X1 = ones(m,1);
+X_final = [X1, X];
+X_final = X_final.'
+a = size(X_final)
+alpha = 0.0001;
+theta = [1;1;1]
+d = size(theta)
+%%
+% Initialize parameters
+for i = 1:50
+    h = theta.'*X_final
+    err = (h-y)
+    J = (1/(2*m))*(sum(err.^2))
+    e =size(err)
+    del_theta = (1/(m))*((err*X_final.').')
+    theta = theta-(alpha.*del_theta)
+end
+%Your code here
+
+%% loop over number of iterations
+    
+%% Compute hypothesis, error and cost function (J)
+
+%Your code here
+
+%% Computation of gradient
+
+%Your code here
+
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+hold on;
+% calculate y1 using prediction formula with updated theta values
+y1 = theta.'*X_final
+%Your code here
+y1
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-02 18:51:28 IST,1,239,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,N
+Gontine Jaya Kumar,17981A0559@raghuenggcollege.in,27840574,27697402,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+
+X=[ones(16,1),age,weight];
+y=[bp'];
+del_theta=ones(1,3)
+%% determine the values of m and n; here m=number of samples, n=number of features
+[m,n]=size(X)
+%%
+% Initialize parameters
+alpha=0.0001
+theta=[1;1;1]
+%Your code here
+
+%% loop over number of iterations
+for i=1:50
+    h=theta'*X'
+    error=(h-y)
+    J=(sum(error.^2))/(2*m)
+    del_theta=((error*X)/m)
+    theta=theta-(alpha.*del_theta')
+end
+   
+%% Updating Parameters
+
+%Your code here
+
+
+% plot of actual BP values
+y1=theta'*X'
+plot(y,'bo-','Linewidth',2.5)
+ylim([90 170])
+hold on;
+% calculate y1 using prediction formula with updated theta values
+
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-06 09:47:56 IST,1,190,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,Y
+Donkada Nikhil,18981A0538@raghuenggcollege.in,27839356,27696184,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[ones(16,1),age,weight];
+y=[bp'];
+del_theta=ones(1,3)
+[m,n]=size(X)
+alpha=0.0001
+theta=[1;1;1]
+for i=1:50
+    h=theta'*X'
+    error=(h-y)
+    J=(sum(error.^2))/(2*m)
+    del_theta=((error*X)/m)
+    theta=theta-(alpha.*del_theta')
+end
+y1=theta'*X'
+plot(y,'bo-','Linewidth',2.5)
+ylim([90 170])
+hold on;
+% calculate y1 using prediction formula with updated theta values
+
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-06 08:09:23 IST,1,190,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,Y
+Sri Sai Yesaswi varma,18981a0541@raghuenggcollege.in,27839374,27696202,"% deepNets-SRG programming task-III
+%Instructor-Sivaramarao Bodda
+%Raghu Engineering College,Visakhapatanam.
+%-------------------------------------------
+% Session-III... Predicting systolic blood pressure of a person
+%Given Data
+
+%% read the given database and assign the values to X, y
+%%  Use 'load' function to read the given mat file and assign it to variable F
+
+filename = 'bloodpressure.mat';
+myVars = {'M'};
+F= load(filename,myVars{:})
+age=F.M.Age_years_;
+weight=F.M.Weight_Kgs_;
+bp=F.M.Systolic_BP_;
+X=[ones(16,1),age,weight];
+y=[bp'];
+del_theta=ones(1,3)
+
+%% determine the values of m and n; here m=number of samples, n=number of features
+[m,n]=size(X)
+
+
+%%
+% Initialize parameters
+alpha=0.0001
+theta=[1;1;1]
+
+%Your code here
+for i=1:50
+    h=theta'*X'
+    error=(h-y)
+    J=(sum(error.^2))/(2*m)
+    del_theta=((error*X)/m)
+    theta=theta-(alpha.*del_theta')
+end
+y1=theta'*X'
+
+% plot of actual BP values
+plot(y,'bo-','Linewidth',2.5)
+ylim([90 170])
+hold on;
+% calculate y1 using prediction formula with updated theta values
+
+%Your code here
+
+plot(y1,'rx-','Linewidth',2.5)
+xlabel('Sample Number')
+ylabel('Blood Pressure(mm of Hg)')
+legend('Actual', 'Predicted')",4,4,2020-08-06 08:10:29 IST,1,190,100%,183346,Predicting Systolic Blood Pressure (BP) from the age and weight of a person,200374,46789,Programming Task-III,Y
